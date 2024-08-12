@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Registration</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://sweedu.com/wp-content/uploads/2022/11/Blog-image-Sweedu.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand text-white " href="#">Student Management
+				System</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/students}">Student Management</a></li>
+			</div>
+		</div>
+	</nav>
+    <section class="d-flex justify-content-center align-items-center vh-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <marquee style="background-color: yellow; color: black;">
+                                    <h3>Welcome to Form page!</h3>
+                                </marquee>
+                                <h4>Update Student</h4>
+                            </div>
+                            <form th:action="@{/students/edit/{id}(id=${student.id})}" th:object="${student}" method="post">
+                                <div class="form-group">
+                                    <label for="firstName">Enter Student First Name:</label>
+                                    <input type="text" class="form-control" th:field="*{firstName}"id="firstName" placeholder="Enter name" required="required" name="firstName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Enter Student Last Name:</label>
+                                    <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Enter last name" required="required" name="lastName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Enter Email:</label>
+                                    <input type="email" class="form-control" th:field="*{Email}" id="email" placeholder="Enter your email" required="required" name="email">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
